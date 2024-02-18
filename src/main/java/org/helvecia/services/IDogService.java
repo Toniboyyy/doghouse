@@ -16,7 +16,7 @@ public interface IDogService {
     
     DogEntity updateEntity(DogEntity entity);
 
-    DogEntity deleteEntity(Long id);
+    void deleteEntity(Long id) throws EntityNotFoundException;
 
     DogEntity getEntityById(Long id) throws EntityNotFoundException;
 

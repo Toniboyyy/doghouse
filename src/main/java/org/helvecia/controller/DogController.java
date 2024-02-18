@@ -64,8 +64,7 @@ public class DogController {
     @DELETE
     @Path("/{id:\\d+}")
     public void deleteEntity(@PathParam("id")Long id) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'updateEntity'");
+        this.dogService.deleteEntity(id);
     }
 
     @GET

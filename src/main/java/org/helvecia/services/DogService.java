@@ -33,9 +33,11 @@ public class DogService implements IDogService {
     }
 
     @Override
-    public DogEntity deleteEntity(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteEntity'");
+    public void deleteEntity(Long id) throws EntityNotFoundException {
+        if(!DogEntity.deleteById(id)){
+            throw new EntityNotFoundException();
+        }
+
     }
 
     @Override
