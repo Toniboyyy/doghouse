@@ -33,6 +33,7 @@ public class DogService implements IDogService {
     }
 
     @Override
+    @Transactional
     public void deleteEntity(Long id) throws EntityNotFoundException {
         if(!DogEntity.deleteById(id)){
             throw new EntityNotFoundException();

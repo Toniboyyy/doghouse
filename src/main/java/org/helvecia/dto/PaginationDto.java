@@ -14,7 +14,7 @@ public class PaginationDto<T> {
 
     private Sorting sorting;
 
-    private String column;
+    //private String column;
 
     private Long totalEntries;
 

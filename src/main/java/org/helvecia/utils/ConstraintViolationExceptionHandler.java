@@ -3,6 +3,7 @@ package org.helvecia.utils;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import io.quarkus.logging.Log;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -13,6 +14,7 @@ public class ConstraintViolationExceptionHandler implements ExceptionMapper<Cons
 
     @Override
     public Response toResponse(ConstraintViolationException exception) {        
+        Log.info(exception);
         Map<String, String> errorMessages = exception.getConstraintViolations().stream()
         .collect(
             Collectors.toMap(
