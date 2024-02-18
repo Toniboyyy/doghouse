@@ -12,6 +12,7 @@ import org.helvecia.mapper.IMapper;
 import org.helvecia.mapper.PaginationMapper;
 import org.helvecia.services.IDogService;
 import org.helvecia.utils.ValidationGroups.Create;
+import org.helvecia.utils.ValidationGroups.Update;
 import org.jboss.resteasy.reactive.ResponseStatus;
 
 import io.quarkus.panache.common.Page;
@@ -52,9 +53,9 @@ public class DogController {
     }
 
     @PUT
-    public DogDto updateEntity(DogDto dogDto) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'updateEntity'");
+    public DogDto updateEntity(@Valid @ConvertGroup(to = Update.class)DogDto dogDto) throws EntityNotFoundException {
+        var dog = this.dogService.updateEntity(mapper.mapToEntity(dogDto));
+        return mapper.mapToDto(dog);
     }
 
     @DELETE

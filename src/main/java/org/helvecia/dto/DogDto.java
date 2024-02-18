@@ -1,14 +1,16 @@
 package org.helvecia.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.helvecia.entities.enumerations.Gender;
 import org.helvecia.utils.ValidationGroups.Create;
 import org.helvecia.utils.ValidationGroups.Update;
+import org.helvecia.utils.annotations.BirthRange;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
+import jakarta.validation.constraints.Size;
 
 public class DogDto {
     
@@ -17,13 +19,15 @@ public class DogDto {
     private Long id;
 
     @NotBlank(groups = Create.class)
+    @Size(min = 3, max = 50)
     private String name;
 
     @NotNull(groups = Create.class)
     private Gender gender;
 
     @NotNull(groups = Create.class)
-    private Date date;
+    @BirthRange(min = 0, max = 30, groups = {Create.class, Update.class})
+    private LocalDate date;
 
     public Long getId() {
         return id;
@@ -49,11 +53,11 @@ public class DogDto {
         this.gender = gender;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }

@@ -1,6 +1,6 @@
 package org.helvecia.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.helvecia.entities.enumerations.Gender;
 
@@ -14,7 +14,7 @@ public class DogEntity extends PanacheEntity {
 
     private Gender gender;
 
-    private Date date;
+    private LocalDate date;
 
     public String getName() {
         return name;
@@ -32,11 +32,11 @@ public class DogEntity extends PanacheEntity {
         this.gender = gender;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

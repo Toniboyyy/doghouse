@@ -27,9 +27,16 @@ public class DogService implements IDogService {
     }
 
     @Override
-    public DogEntity updateEntity(DogEntity entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateEntity'");
+    @Transactional
+    public DogEntity updateEntity(DogEntity entity) throws EntityNotFoundException {
+        var current = getEntityById(entity.id);
+
+        current.setName(entity.getName());
+        current.setDate(entity.getDate());
+        current.setGender(entity.getGender());
+        
+        DogEntity.persist(current);
+        return current;
     }
 
     @Override
