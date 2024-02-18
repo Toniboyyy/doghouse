@@ -1,13 +1,12 @@
-package org.helvecia.services;
+package org.helvecia.persistance;
 
 import java.util.List;
 
 import org.helvecia.entities.DogEntity;
-import org.helvecia.exceptions.DogOverflowException;
 
-public interface IDogService {
-
-    DogEntity saveEntity(DogEntity entity) throws DogOverflowException;
+public interface IDogDAO {
+    
+    DogEntity saveEntity(DogEntity entity);
     
     DogEntity updateEntity(DogEntity entity);
 
@@ -18,4 +17,6 @@ public interface IDogService {
     List<DogEntity> getPaginationEntity(int padeIndex, int entries);
 
     List<DogEntity> getAllEntities();
+
+    Long countEntities();
 }

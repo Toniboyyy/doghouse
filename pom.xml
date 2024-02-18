@@ -58,6 +58,19 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-reactive-jsonb</artifactId>
     </dependency>
+    <dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-narayana-jta</artifactId>
+</dependency>
+<!-- Hibernate ORM specific dependencies -->
+<dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-hibernate-orm-panache</artifactId>
+</dependency>
+<dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-hibernate-validator</artifactId>
+</dependency>
   </dependencies>
   <build>
     <plugins>

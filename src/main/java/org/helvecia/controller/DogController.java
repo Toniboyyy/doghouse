@@ -3,8 +3,18 @@ import java.util.List;
 
 import org.helvecia.dto.DogDto;
 import org.helvecia.dto.PaginationDto;
+import org.helvecia.entities.DogEntity;
 import org.helvecia.entities.enumerations.Sorting;
+import org.helvecia.exceptions.DogOverflowException;
+import org.helvecia.mapper.DogMapper;
+import org.helvecia.mapper.IMapper;
+import org.helvecia.services.IDogService;
+import org.helvecia.utils.ValidationGroups;
+import org.helvecia.utils.ValidationGroups.Create;
 
+import jakarta.inject.Inject;
+import jakarta.validation.Valid;
+import jakarta.validation.groups.ConvertGroup;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -21,10 +31,19 @@ import jakarta.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 public class DogController {
 
+    private IDogService dogService;
+    private IMapper<DogDto, DogEntity> mapper;
+
+
+    public DogController(IDogService dogService, DogMapper dogMapper) {
+        this.dogService = dogService;
+        this.mapper = dogMapper;
+    }
+
     @POST
-    public DogDto saveEntity(DogDto dogDto) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'saveEntity'");
+    public DogDto saveEntity(@Valid @ConvertGroup(to = Create.class) DogDto dogDto) throws DogOverflowException {
+        var dog = this.dogService.saveEntity(mapper.mapToEntity(dogDto));
+        return mapper.mapToDto(dog);
     }
 
     @PUT

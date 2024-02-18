@@ -1,30 +1,17 @@
-package org.helvecia.services;
+package org.helvecia.persistance;
 
 import java.util.List;
 
 import org.helvecia.entities.DogEntity;
-import org.helvecia.exceptions.DogOverflowException;
-import org.helvecia.persistance.IDogDAO;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.transaction.Transactional;
 
 @ApplicationScoped
-public class DogService implements IDogService {
-
-    private IDogDAO dogDAO;
-
-    public DogService(IDogDAO dogDAO) {
-        this.dogDAO = dogDAO;
-    }
-
-    @Override
-    @Transactional
-    public DogEntity saveEntity(DogEntity entity) throws DogOverflowException {
-        if(dogDAO.countEntities() < 10){
-            return dogDAO.saveEntity(entity);
-        }
-        throw new DogOverflowException();
+public class DogDAO implements IDogDAO{
+    
+    public DogEntity saveEntity(DogEntity entity) {
+        entity.persist();
+        return entity;
     }
 
     @Override
@@ -55,6 +42,11 @@ public class DogService implements IDogService {
     public List<DogEntity> getAllEntities() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAllEntities'");
+    }
+
+    @Override
+    public Long countEntities() {
+        return DogEntity.count();
     }
     
 }
