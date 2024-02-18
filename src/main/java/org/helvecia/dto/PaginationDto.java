@@ -14,7 +14,9 @@ public class PaginationDto<T> {
 
     private Sorting sorting;
 
+    private String column;
 
+    private Long totalEntries;
 
     public int getPageIndex() {
         return pageIndex;
@@ -46,6 +48,14 @@ public class PaginationDto<T> {
 
     public void setSorting(Sorting sorting) {
         this.sorting = sorting;
+    }
+
+    public Long getTotalEntries() {
+        return totalEntries;
+    }
+
+    public void setTotalEntries(Long totalEntries) {
+        this.totalEntries = totalEntries;
     }
 
 }

@@ -1,9 +1,6 @@
 package org.helvecia.mapper;
 
-import java.util.List;
-
 import org.helvecia.dto.DogDto;
-import org.helvecia.dto.PaginationDto;
 import org.helvecia.entities.DogEntity;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -33,12 +30,6 @@ public class DogMapper implements IMapper<DogDto, DogEntity>{
         dto.setDate(entity.getDate());
         
         return dto;
-    }
-
-    @Override
-    public PaginationDto<DogDto> mapToPagination(List<DogDto> list, int pageIndex, int pageSize) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mapToPagination'");
     }
 
 }

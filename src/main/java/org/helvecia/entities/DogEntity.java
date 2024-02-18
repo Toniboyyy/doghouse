@@ -8,8 +8,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 
 @Entity
-public class DogEntity extends PanacheEntity{
-
+public class DogEntity extends PanacheEntity {
 
     private String name;
 

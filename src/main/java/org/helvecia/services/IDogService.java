@@ -3,7 +3,12 @@ package org.helvecia.services;
 import java.util.List;
 
 import org.helvecia.entities.DogEntity;
+import org.helvecia.entities.PageEntity;
 import org.helvecia.exceptions.DogOverflowException;
+import org.helvecia.exceptions.EntityNotFoundException;
+
+import io.quarkus.panache.common.Page;
+import io.quarkus.panache.common.Sort;
 
 public interface IDogService {
 
@@ -13,9 +18,9 @@ public interface IDogService {
 
     DogEntity deleteEntity(Long id);
 
-    DogEntity getEntityById(Long id);
+    DogEntity getEntityById(Long id) throws EntityNotFoundException;
 
-    List<DogEntity> getPaginationEntity(int padeIndex, int entries);
+    public PageEntity<DogEntity> getPaginationEntity(Page page, Sort sort);
 
-    List<DogEntity> getAllEntities();
+    List<DogEntity> getAllEntities(Sort sort);
 }
