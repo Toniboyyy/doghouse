@@ -3,9 +3,9 @@ package org.helvecia.dto;
 import java.time.LocalDate;
 
 import org.helvecia.entities.enumerations.Gender;
-import org.helvecia.utils.ValidationGroups.Create;
-import org.helvecia.utils.ValidationGroups.Update;
 import org.helvecia.utils.annotations.BirthRange;
+import org.helvecia.utils.annotations.ValidationGroups.Create;
+import org.helvecia.utils.annotations.ValidationGroups.Update;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

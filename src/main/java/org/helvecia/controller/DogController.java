@@ -11,8 +11,8 @@ import org.helvecia.mapper.DogMapper;
 import org.helvecia.mapper.IMapper;
 import org.helvecia.mapper.PaginationMapper;
 import org.helvecia.services.IDogService;
-import org.helvecia.utils.ValidationGroups.Create;
-import org.helvecia.utils.ValidationGroups.Update;
+import org.helvecia.utils.annotations.ValidationGroups.Create;
+import org.helvecia.utils.annotations.ValidationGroups.Update;
 import org.jboss.resteasy.reactive.ResponseStatus;
 
 import io.quarkus.panache.common.Page;

@@ -1,4 +1,4 @@
-package org.helvecia.utils;
+package org.helvecia.utils.exceptionHandler;
 
 import org.helvecia.exceptions.DogOverflowException;
 

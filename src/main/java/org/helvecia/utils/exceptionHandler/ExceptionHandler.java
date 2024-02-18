@@ -1,4 +1,4 @@
-package org.helvecia.utils;
+package org.helvecia.utils.exceptionHandler;
 
 import io.quarkus.logging.Log;
 import jakarta.ws.rs.core.Response;

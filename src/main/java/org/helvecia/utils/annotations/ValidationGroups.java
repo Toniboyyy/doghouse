@@ -1,4 +1,4 @@
-package org.helvecia.utils;
+package org.helvecia.utils.annotations;
 
 import jakarta.validation.groups.Default;
 

@@ -1,4 +1,4 @@
-package org.helvecia.utils;
+package org.helvecia.utils.exceptionHandler;
 
 import java.util.Map;
 import java.util.stream.Collectors;
