@@ -63,7 +63,7 @@ public class DogController {
 
     @DELETE
     @Path("/{id:\\d+}")
-    public void deleteEntity(@PathParam("id")Long id) {
+    public void deleteEntity(@PathParam("id")Long id) throws EntityNotFoundException {
         this.dogService.deleteEntity(id);
     }
 
