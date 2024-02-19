@@ -17,6 +17,7 @@ import org.jboss.resteasy.reactive.ResponseStatus;
 
 import io.quarkus.panache.common.Page;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.groups.ConvertGroup;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -82,8 +83,8 @@ public class DogController {
 
     @GET
     @Path("/list")
-    public List<DogDto> getAll(@QueryParam("sort") Sorting sorting) {
-        var response = dogService.getAllEntities(paginatMapper.getSortDirection(sorting, "date"));
+    public List<DogDto> getAll(@QueryParam("sort") Sorting sorting, @NotNull @QueryParam("search") String search) {
+        var response = dogService.getAllEntities(paginatMapper.getSortDirection(sorting, "date"), search);
         return response.stream().map(mapper::mapToDto).toList();
     }
 }

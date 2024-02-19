@@ -8,6 +8,7 @@ import org.helvecia.exceptions.DogOverflowException;
 import org.helvecia.exceptions.EntityNotFoundException;
 
 import io.quarkus.panache.common.Page;
+import io.quarkus.panache.common.Parameters;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
@@ -64,8 +65,9 @@ public class DogService implements IDogService {
     }
 
     @Override
-    public List<DogEntity> getAllEntities(Sort sort) {
-        return DogEntity.findAll(sort).list();
+    public List<DogEntity> getAllEntities(Sort sort, String searchTerm) {
+        String jpqlQuery = "SELECT e FROM DogEntity e WHERE LOWER(e.name) LIKE LOWER(:searchString)";
+        return DogEntity.find(jpqlQuery, sort, Parameters.with("searchString", "%" + searchTerm.toLowerCase() + "%")).list();
     }
     
 }

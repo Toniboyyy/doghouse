@@ -22,5 +22,5 @@ public interface IDogService {
 
     public PageEntity<DogEntity> getPaginationEntity(Page page, Sort sort);
 
-    List<DogEntity> getAllEntities(Sort sort);
+    List<DogEntity> getAllEntities(Sort sort, String searchTerm);
 }
