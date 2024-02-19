@@ -21,6 +21,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.groups.ConvertGroup;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -83,7 +84,7 @@ public class DogController {
 
     @GET
     @Path("/list")
-    public List<DogDto> getAll(@QueryParam("sort") Sorting sorting, @NotNull @QueryParam("search") String search) {
+    public List<DogDto> getAll(@QueryParam("sort") Sorting sorting, @QueryParam("search") String search) {
         var response = dogService.getAllEntities(paginatMapper.getSortDirection(sorting, "date"), search);
         return response.stream().map(mapper::mapToDto).toList();
     }

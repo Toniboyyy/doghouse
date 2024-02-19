@@ -66,6 +66,9 @@ public class DogService implements IDogService {
 
     @Override
     public List<DogEntity> getAllEntities(Sort sort, String searchTerm) {
+        if(searchTerm == null){
+            return DogEntity.listAll(sort);
+        }
         String jpqlQuery = "SELECT e FROM DogEntity e WHERE LOWER(e.name) LIKE LOWER(:searchString)";
         return DogEntity.find(jpqlQuery, sort, Parameters.with("searchString", "%" + searchTerm.toLowerCase() + "%")).list();
     }
